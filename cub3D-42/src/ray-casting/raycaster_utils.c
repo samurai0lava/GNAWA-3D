@@ -1,0 +1,95 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycaster_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iouhssei <iouhssei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/14 03:04:06 by iouhssei          #+#    #+#             */
+/*   Updated: 2025/05/22 15:25:53 by iouhssei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../inc/cube3d.h"
+
+void	draw_vertical_line(t_cube *cube, int x, int wall_height, int color)
+{
+	int	y;
+
+	cube->start_y = (HEIGHT / 2) - (wall_height / 2);
+	if (cube->start_y < 0)
+		cube->start_y = 0;
+	cube->end_y = (HEIGHT / 2) + (wall_height / 2);
+	if (cube->end_y >= HEIGHT)
+		cube->end_y = HEIGHT - 1;
+	y = 0;
+	while (y < cube->start_y)
+	{
+		my_mlx_pixel_put(cube->data, x, y, 0x0087CEEB);
+		y++;
+	}
+	while (y < cube->end_y)
+	{
+		my_mlx_pixel_put(cube->data, x, y, color);
+		y++;
+	}
+	while (y < HEIGHT)
+	{
+		my_mlx_pixel_put(cube->data, x, y, 0x00333333);
+		y++;
+	}
+}
+
+static unsigned long	get_colors_hex(t_rgb color)
+{
+	int				red;
+	int				green;
+	int				blue;
+	unsigned long	hex_color;
+
+	red = color.r;
+	blue = color.b;
+	green = color.g;
+	hex_color = ((red & 0xff) << 16) + ((green & 0xff) << 8) + (blue & 0xff);
+	return (hex_color);
+}
+
+void	draw_floor(t_cube *cube, int y, int x)
+{
+	while (y < HEIGHT)
+	{
+		my_mlx_pixel_put(cube->data, x, y, get_colors_hex(cube->map.f_rgb));
+		y++;
+	}
+}
+
+int	draw_sky(t_cube *cube, int x, int start_y)
+{
+	int	y;
+
+	y = 0;
+	while (y < start_y)
+	{
+		my_mlx_pixel_put(cube->data, x, y, get_colors_hex(cube->map.c_rgb));
+		y++;
+	}
+	return (y);
+}
+
+void	init_raycast_angle_and_delta(t_cube *cube, t_raycast *rc, int ray_index)
+{
+	rc->ray_angle = cube->start_angle + ray_index * cube->angle_step;
+	rc->ray_angle = fmod(rc->ray_angle + 2.0 * PI, 2.0 * PI);
+	rc->raydirx = cos(rc->ray_angle);
+	rc->raydiry = sin(rc->ray_angle);
+	rc->mapx = (int)(cube->p_x / S_TEX);
+	rc->mapy = (int)(cube->p_y / S_TEX);
+	if (rc->raydirx == 0)
+		rc->deltadistx = 1e30;
+	else
+		rc->deltadistx = fabs(1.0 / rc->raydirx);
+	if (rc->raydiry == 0)
+		rc->deltadisty = 1e30;
+	else
+		rc->deltadisty = fabs(1.0 / rc->raydiry);
+}
