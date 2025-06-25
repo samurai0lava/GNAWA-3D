@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 10:23:49 by iouhssei          #+#    #+#             */
-/*   Updated: 2024/06/13 10:24:10 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/06/25 20:53:45 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../libft/libft.h"
+# include "../../libft/libft.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moaregra <moaregra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 15:44:41 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/05/28 20:00:56 by moaregra         ###   ########.fr       */
+/*   Updated: 2025/06/25 20:53:29 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
-# include "../libft/libft.h"
+# include "../../libft/libft.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moaregra <moaregra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:51:05 by moaregra          #+#    #+#             */
-/*   Updated: 2025/05/28 20:00:10 by moaregra         ###   ########.fr       */
+/*   Updated: 2025/06/25 16:33:01 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_double(char *s, char *to_find)
 		return (0);
 	if (tmp != NULL)
 	{
-		if (tmp + 1 == NULL)
+		if (tmp[1] == '\0')
 			return (0);
 		tmp2 = ft_strnstr(tmp + 1, to_find, ft_strlen(s));
 		if (tmp2 != NULL)
