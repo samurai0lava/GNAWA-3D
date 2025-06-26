@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 10:25:54 by iouhssei          #+#    #+#             */
-/*   Updated: 2024/06/13 10:25:58 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:16:34 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	data_init(t_data *data)
+void	data_init(t_data_solong *data)
 {
 	data->left_check = -1;
 	data->moves = 0;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 13:39:45 by iouhssei          #+#    #+#             */
-/*   Updated: 2024/06/13 13:39:50 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:17:03 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static void	handle_moves2(t_data *data, int new_x, int new_y)
+static void	handle_moves2(t_data_solong *data, int new_x, int new_y)
 {
 	if (new_x >= 0 && new_x < data->map_width && new_y >= 0
 		&& new_y < data->map_height && data->map[new_y][new_x] != '1')
@@ -41,7 +41,7 @@ static void	handle_moves2(t_data *data, int new_x, int new_y)
 	}
 }
 
-int	handle_moves(int key, t_data *data)
+int	handle_moves(int key, t_data_solong *data)
 {
 	int	new_x;
 	int	new_y;

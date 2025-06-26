@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 10:27:09 by iouhssei          #+#    #+#             */
-/*   Updated: 2024/06/13 10:27:12 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:17:30 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	initialize_data(t_data *data)
+int	initialize_data(t_data_solong *data)
 {
 	data->mlx = mlx_init();
 	if (!data->mlx)
@@ -21,7 +21,7 @@ int	initialize_data(t_data *data)
 	return (0);
 }
 
-int	load_and_validate_map(t_data *data, char *map_file)
+int	load_and_validate_map(t_data_solong *data, char *map_file)
 {
 	data->map = load_map(map_file, &data->map_height, data);
 	if (!data->map)
@@ -39,7 +39,7 @@ int	load_and_validate_map(t_data *data, char *map_file)
 	return (0);
 }
 
-int	create_window(t_data *data)
+int	create_window(t_data_solong *data)
 {
 	data->win = mlx_new_window(data->mlx, data->map_width * 32, data->map_height
 			* 32, "so_long");
@@ -52,7 +52,7 @@ int	create_window(t_data *data)
 	return (0);
 }
 
-int	setup_game(t_data *data)
+int	setup_game(t_data_solong *data)
 {
 	if (load_images(data) != 0)
 		return (1);
@@ -60,7 +60,7 @@ int	setup_game(t_data *data)
 	return (0);
 }
 
-void	free_map(t_data *data)
+void	free_map(t_data_solong *data)
 {
 	int	i;
 

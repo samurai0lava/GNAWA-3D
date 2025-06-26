@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 10:26:53 by iouhssei          #+#    #+#             */
-/*   Updated: 2024/06/13 10:26:56 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:17:12 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	calculate_map_dimensions(const char *filename, t_data *data)
+int	calculate_map_dimensions(const char *filename, t_data_solong *data)
 {
 	int		fd;
 	char	*line;
@@ -35,7 +35,7 @@ int	calculate_map_dimensions(const char *filename, t_data *data)
 	return (0);
 }
 
-void	player_check(t_data *data)
+void	player_check(t_data_solong *data)
 {
 	int	i;
 	int	j;

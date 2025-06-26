@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   load_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 10:26:06 by iouhssei          #+#    #+#             */
-/*   Updated: 2024/06/13 10:26:12 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:16:51 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static char	**allocate_map_memory(t_data *data)
+static char	**allocate_map_memory(t_data_solong *data)
 {
 	char	**map;
 
@@ -22,7 +22,7 @@ static char	**allocate_map_memory(t_data *data)
 	return (map);
 }
 
-static void	count_collectibles(const char *line, t_data *data)
+static void	count_collectibles(const char *line, t_data_solong *data)
 {
 	int	j;
 
@@ -35,7 +35,7 @@ static void	count_collectibles(const char *line, t_data *data)
 	}
 }
 
-static int	process_map_line(char **map, char *line, int i, t_data *data)
+static int	process_map_line(char **map, char *line, int i, t_data_solong *data)
 {
 	size_t	len;
 
@@ -49,7 +49,7 @@ static int	process_map_line(char **map, char *line, int i, t_data *data)
 	return (0);
 }
 
-static int	load_map_content(const char *filename, char **map, t_data *data)
+static int	load_map_content(const char *filename, char **map, t_data_solong *data)
 {
 	int		fd;
 	char	*line;
@@ -79,7 +79,7 @@ static int	load_map_content(const char *filename, char **map, t_data *data)
 	return (0);
 }
 
-char	**load_map(const char *filename, int *height, t_data *data)
+char	**load_map(const char *filename, int *height, t_data_solong *data)
 {
 	char	**map;
 

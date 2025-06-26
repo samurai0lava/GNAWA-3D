@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_solong.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 10:26:23 by iouhssei          #+#    #+#             */
-/*   Updated: 2024/06/13 10:26:27 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/06/26 16:22:02 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "inc/cube3dxsolong.h"
+
+
+
 int	close_window(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
@@ -45,7 +48,7 @@ int	load_images(t_data *data)
 	return (0);
 }
 
-int	main(int argc, char **argv)
+int	main_solong(int argc, char **argv)
 {
 	t_data	data;
 

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 10:25:25 by iouhssei          #+#    #+#             */
-/*   Updated: 2024/06/13 10:25:32 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:16:25 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../inc/so_long.h"
 
-static void	draw_static_element(t_data *data, int x, int y)
+static void	draw_static_element(t_data_solong *data, int x, int y)
 {
 	if (data->map[y][x] == '0')
 		mlx_put_image_to_window(data->mlx, data->win, data->img_ground, x
@@ -33,7 +34,7 @@ static void	draw_static_element(t_data *data, int x, int y)
 	}
 }
 
-static void	draw_dynamic_element(t_data *data, int x, int y)
+static void	draw_dynamic_element(t_data_solong *data, int x, int y)
 {
 	if (data->map[y][x] == 'P')
 	{
@@ -46,13 +47,13 @@ static void	draw_dynamic_element(t_data *data, int x, int y)
 	}
 }
 
-static void	draw_element(t_data *data, int x, int y)
+static void	draw_element(t_data_solong *data, int x, int y)
 {
 	draw_static_element(data, x, y);
 	draw_dynamic_element(data, x, y);
 }
 
-static void	draw_map_row(t_data *data, int y)
+static void	draw_map_row(t_data_solong *data, int y)
 {
 	int	x;
 
@@ -64,7 +65,7 @@ static void	draw_map_row(t_data *data, int y)
 	}
 }
 
-void	draw_map(t_data *data)
+void	draw_map(t_data_solong *data)
 {
 	int	y;
 

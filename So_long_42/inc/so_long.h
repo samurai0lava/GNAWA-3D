@@ -6,7 +6,7 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 10:23:49 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/06/25 20:53:45 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/06/26 18:15:25 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_point
 	int		x;
 	int		y;
 }			t_point;
-typedef struct s_data
+typedef struct s_data_solong
 {
 	void	*mlx;
 	void	*win;
@@ -51,25 +51,25 @@ typedef struct s_data
 	int		exit_count;
 	int		collectible_count;
 	t_point	exit_pos;
-}			t_data;
+}			t_data_solong;
 
 int			parsing_input(char *argv);
-void		draw_map(t_data *data);
-char		**load_map(const char *filename, int *height, t_data *data);
-int			load_images(t_data *data);
-int			handle_moves(int key, t_data *data);
-int			check_map(t_data *data);
-void		flood_fill(int x, int y, char **map, t_data *data);
-void		data_init(t_data *data);
-void		game_start(t_data data);
-void		free_map(t_data *data);
+void		draw_map(t_data_solong *data);
+char		**load_map(const char *filename, int *height, t_data_solong *data);
+int			load_images(t_data_solong *data);
+int			handle_moves(int key, t_data_solong *data);
+int			check_map(t_data_solong *data);
+void		flood_fill(int x, int y, char **map, t_data_solong *data);
+void		data_init(t_data_solong *data);
+void		game_start(t_data_solong data);
+void		free_map(t_data_solong *data);
 void		free_map_1(char **map, int height);
-void		player_check(t_data *data);
-int			initialize_data(t_data *data);
-int			load_and_validate_map(t_data *data, char *map_file);
-int			create_window(t_data *data);
-int			setup_game(t_data *data);
-int			calculate_map_dimensions(const char *filename, t_data *data);
-int			close_window(t_data *data);
+void		player_check(t_data_solong *data);
+int			initialize_data(t_data_solong *data);
+int			load_and_validate_map(t_data_solong *data, char *map_file);
+int			create_window(t_data_solong *data);
+int			setup_game(t_data_solong *data);
+int			calculate_map_dimensions(const char *filename, t_data_solong *data);
+int			close_window(t_data_solong *data);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 10:25:01 by iouhssei          #+#    #+#             */
-/*   Updated: 2024/06/13 10:25:04 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:17:50 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	**copy_map(char **map, int width, int height)
 	return (new_map);
 }
 
-void	flood_fill(int x, int y, char **map, t_data *data)
+void	flood_fill(int x, int y, char **map, t_data_solong *data)
 {
 	if (x < 0 || x >= data->map_width || y < 0 || y >= data->map_height)
 		return ;
@@ -92,7 +92,7 @@ int	check_border(char **map, int width, int height)
 	return (1);
 }
 
-int	check_map(t_data *data)
+int	check_map(t_data_solong *data)
 {
 	char	**map_copy;
 
