@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <iouhssei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 15:02:54 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/05/22 15:15:25 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/06/27 19:01:27 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	draw_mp(t_cube *cube, t_mini_map m)
 	if (m.map_x >= 0 && m.map_x < (int)m.col_count)
 	{
 		if (cube->map.map[m.map_y][m.map_x] == '1')
-			draw_minimap_pixel(cube, m.local_x, m.local_y, 0x00FFFFFF);
+			draw_minimap_pixel(cube, m.local_x, m.local_y, 0x00404040);
 	}
 }
 
@@ -44,7 +44,7 @@ void	draw_walls_mini_map(t_cube *cube)
 			m.local_x++;
 		}
 		m.local_y++;
-	}
+	} 
 }
 
 void	draw_circular_minimap(t_cube *cube)
