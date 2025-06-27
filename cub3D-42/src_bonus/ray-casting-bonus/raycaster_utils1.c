@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_utils1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <iouhssei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 03:05:38 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/05/22 15:16:57 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:18:40 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ int	color_shading(int color, double distance)
 	int	g;
 	int	b;
 
-	shade = 0xFF - (int)(0xFF * (distance / 1000));
+	shade = 0xFF - (int)(0xFF * (distance / 200));
 	if (shade < 0)
 		shade = 0;
-	if (shade < 54)
-		shade = 54;
+	if (shade < 10)
+		shade = 10;
 	r = (color >> 16) & 0xFF;
 	g = (color >> 8) & 0xFF;
 	b = color & 0xFF;

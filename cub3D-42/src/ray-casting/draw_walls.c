@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <iouhssei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:40:03 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/05/22 15:28:10 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/06/27 00:31:18 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_wall	calculate_wall_draw_params(t_raycast *rc)
 	return (params);
 }
 
-static void	draw_textured_wall_segment(t_cube *cube, t_raycast *rc,
+void	draw_textured_wall_segment(t_cube *cube, t_raycast *rc,
 		t_wall params, int draw_start_y)
 {
 	double	tex_pos;
@@ -52,21 +52,44 @@ static void	draw_textured_wall_segment(t_cube *cube, t_raycast *rc,
 	}
 }
 
+static int	draw_textured_sky(t_cube *cube, int x, int start_y)
+{
+    int y;
+    double sky_angle;
+    int tex_x, tex_y;
+    int color;
+
+    // Calculate the horizontal angle for this column
+    sky_angle = cube->start_angle + x * FOV / WIDTH;
+    // Map angle to [0, 1] for texture X
+    tex_x = (int)((fmod(sky_angle / (2 * PI), 1.0)) * cube->sky.sky_width);
+    if (tex_x < 0)
+        tex_x += cube->sky.sky_width;
+    for (y = 0; y < start_y; y++)
+    {
+        // Map y to texture y
+        tex_y = (int)(((double)y / (double)HEIGHT) * cube->sky.sky_height);
+        color = cube->sky.sky_pixels[tex_y * cube->sky.sky_width + tex_x];
+        my_mlx_pixel_put(cube->data, x, y, color);
+    }
+    return y;
+}
+
 void	draw_vertical_line_with_texture(t_cube *cube, int x, t_raycast *rc)
 {
-	t_wall	params;
-	int		start_y;
+    t_wall	params;
+    int		start_y;
 
-	rc->x = x;
-	if (rc->wall_height <= 0 || !rc->selected_tex || rc->tex_x < 0
-		|| rc->tex_x >= rc->selected_tex->width)
-	{
-		start_y = draw_sky(cube, x, 0);
-		draw_floor(cube, start_y, x);
-		return ;
-	}
-	params = calculate_wall_draw_params(rc);
-	start_y = draw_sky(cube, x, params.start_y);
-	draw_textured_wall_segment(cube, rc, params, start_y);
-	draw_floor(cube, params.end_y, x);
+    rc->x = x;
+    if (rc->wall_height <= 0 || !rc->selected_tex || rc->tex_x < 0
+        || rc->tex_x >= rc->selected_tex->width)
+    {
+        start_y = draw_textured_sky(cube, x, 0);
+        draw_floor(cube, start_y, x);
+        return ;
+    }
+    params = calculate_wall_draw_params(rc);
+    start_y = draw_textured_sky(cube, x, params.start_y);
+    draw_textured_wall_segment(cube, rc, params, start_y);
+    draw_floor(cube, params.end_y, x);
 }

@@ -6,7 +6,7 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 10:23:49 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/06/26 18:15:25 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/06/26 23:42:38 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		draw_map(t_data_solong *data);
 char		**load_map(const char *filename, int *height, t_data_solong *data);
 int			load_images(t_data_solong *data);
 int			handle_moves(int key, t_data_solong *data);
-int			check_map(t_data_solong *data);
+int			check_map_solong(t_data_solong *data);
 void		flood_fill(int x, int y, char **map, t_data_solong *data);
 void		data_init(t_data_solong *data);
 void		game_start(t_data_solong data);

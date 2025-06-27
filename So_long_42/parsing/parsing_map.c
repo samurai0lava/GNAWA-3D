@@ -6,7 +6,7 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 10:25:01 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/06/26 18:17:50 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/06/26 23:42:19 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	check_border(char **map, int width, int height)
 	return (1);
 }
 
-int	check_map(t_data_solong *data)
+int	check_map_solong(t_data_solong *data)
 {
 	char	**map_copy;
 

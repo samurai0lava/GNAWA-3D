@@ -3,31 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map_helper.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <iouhssei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:13:08 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/05/22 15:19:40 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:15:26 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube3d.h"
 
+// ...existing code...
+
 void	init_minimap_params(t_cube *cube)
 {
-	double	min_dim;
+    double	min_dim;
 
-	if (WIDTH < HEIGHT)
-		min_dim = WIDTH;
-	else
-		min_dim = HEIGHT;
-	cube->minimap_radius = (int)(min_dim * 0.15);
-	cube->minimap_center_x = cube->minimap_radius + 20;
-	cube->minimap_center_y = HEIGHT - cube->minimap_radius - 20;
-	cube->minimap_scale = 0.3;
-	cube->player_dot_size = (int)(cube->minimap_radius * 0.04);
-	if (cube->player_dot_size < 2)
-		cube->player_dot_size = 2;
+    if (WIDTH < HEIGHT)
+        min_dim = WIDTH;
+    else
+        min_dim = HEIGHT;
+    // Decrease multiplier from 0.15 to, say, 0.10
+    cube->minimap_radius = (int)(min_dim * 0.10);
+    // Adjust position as needed
+    cube->minimap_center_x = cube->minimap_radius + 20;
+    cube->minimap_center_y = HEIGHT - cube->minimap_radius - 20;
+    // Increase or decrease this scale to resize the map contents
+    cube->minimap_scale = 0.4;
+    cube->player_dot_size = (int)(cube->minimap_radius * 0.04);
+    if (cube->player_dot_size < 2)
+        cube->player_dot_size = 2;
 }
+// ...existing code...
 
 void	draw_minimap_pixel(t_cube *cube, int local_x, int local_y, int color)
 {

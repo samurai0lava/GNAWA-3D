@@ -6,7 +6,7 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 10:27:09 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/06/26 18:17:30 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/06/26 23:42:47 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	load_and_validate_map(t_data_solong *data, char *map_file)
 		free(data->mlx);
 		return (1);
 	}
-	if (check_map(data) == 1)
+	if (check_map_solong(data) == 1)
 	{
 		ft_putendl_fd("Error", 2);
 		free_map(data);

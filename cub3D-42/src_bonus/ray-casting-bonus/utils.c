@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <iouhssei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 15:44:33 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/05/22 15:19:24 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/06/27 00:35:31 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ static void	destroy_text(t_cube *cube)
 		if (cube->weapon.texture[i].img)
 			mlx_destroy_image(cube->mlx, cube->weapon.texture[i].img);
 		i++;
+	}
+	if(cube->sky.sky_img)
+	{
+		mlx_destroy_image(cube->mlx, cube->sky.sky_img);
+		cube->sky.sky_img = NULL;
 	}
 }
 

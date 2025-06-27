@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <iouhssei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 15:44:52 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/05/22 15:15:50 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:05:18 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ void	mlx_hook_cube(t_cube *cube)
 void	game_engine(t_cube *cube)
 {
 	init_textures(cube);
+	cube->sky.sky_img = mlx_xpm_file_to_image(cube->mlx, "textures/sky.xpm", &cube->sky.sky_width, &cube->sky.sky_height);
+	cube->sky.sky_pixels = (int *)mlx_get_data_addr(cube->sky.sky_img, &cube->sky.bpp, &cube->sky.size_line, &cube->sky.endian);
+	// cube->ground.ground_img = mlx_xpm_file_to_image(cube->mlx, "textures/ground_text.xpm", &cube->ground.ground_width, &cube->ground.ground_height);
+	// cube->ground.ground_pixels = (int *)mlx_get_data_addr(cube->ground.ground_img, &cube->ground.bpp, &cube->ground.size_line, &cube->ground.endian);
 	load_frames(cube);
 	add_frame_ls(cube);
 	mlx_hook_cube(cube);

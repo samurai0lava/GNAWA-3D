@@ -6,7 +6,7 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 15:44:41 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/06/25 20:53:29 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/06/27 15:16:05 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,6 +286,28 @@ typedef struct s_split
 	int						count;
 }							t_split;
 
+typedef struct s_sky
+{
+	void    *sky_img;
+	int     sky_width;
+	int     sky_height;
+	int     *sky_pixels;
+	int    bpp;
+	int    size_line;
+	int    endian;
+}				t_sky;
+
+typedef struct s_ground
+{
+	void    *ground_img;
+	int     ground_width;
+	int     ground_height;
+	int     *ground_pixels;
+	int    bpp;
+	int    size_line;
+	int    endian;
+}				t_ground;
+
 typedef struct s_cube
 {
 	void					*mlx;
@@ -319,7 +341,11 @@ typedef struct s_cube
 	t_handle_keys			hc;
 	t_keys					keys;
 	t_map					map;
+	t_sky					sky;
+	t_ground				ground;
 }							t_cube;
+
+
 
 int							check_newline_in_map(char *s);
 void						print_2d(char **s);

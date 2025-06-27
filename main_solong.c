@@ -6,7 +6,7 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 10:26:23 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/06/26 16:22:02 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/06/26 23:41:25 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 
 
-int	close_window(t_data *data)
+int	close_window(t_data_solong *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
 	exit(0);
 	return (1);
 }
-int	load_images(t_data *data)
+int	load_images(t_data_solong *data)
 {
 	int	size;
 
@@ -50,7 +50,7 @@ int	load_images(t_data *data)
 
 int	main_solong(int argc, char **argv)
 {
-	t_data	data;
+	t_data_solong	data;
 
 	if (argc == 2 && parsing_input(argv[1]))
 	{
