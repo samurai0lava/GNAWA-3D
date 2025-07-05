@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_utils2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <iouhssei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 14:41:29 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/05/22 15:28:10 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/07/04 22:52:18 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,9 @@ int	on_key_press(int keycode, t_cube *cube)
 		cube->keys.left = 1;
 	if (keycode == RIGHT_KEY)
 		cube->keys.right = 1;
+	if (cube->intro_mode && keycode == 32)
+    {
+        cube->intro_mode = 0; // Exit intro mode
+    }
 	return (0);
 }

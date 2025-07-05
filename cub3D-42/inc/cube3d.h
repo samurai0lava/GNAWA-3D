@@ -6,7 +6,7 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 15:44:41 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/06/27 15:16:05 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/07/05 00:40:18 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -343,7 +343,16 @@ typedef struct s_cube
 	t_map					map;
 	t_sky					sky;
 	t_ground				ground;
+	int						intro_mode;
 }							t_cube;
+
+typedef struct s_intro_frame
+{
+    void					*img;
+    int						width;
+    int						height;
+    struct s_intro_frame	*next;
+}	t_intro_frame;
 
 
 
@@ -520,5 +529,7 @@ void						calculate_screen_position(t_cube *cube, int x,
 int							is_pixel_in_bounds(t_cube *cube);
 int							is_pixel_visible(t_cube *cube);
 void						draw_weapon_pixel(t_cube *cube, int x, int y);
+// void						show_intro(t_cube *cube);
+void show_intro(t_cube *cube, t_intro_frame *frames);
 
 #endif

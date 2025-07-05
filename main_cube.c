@@ -6,7 +6,7 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 15:44:29 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/06/26 16:21:51 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/07/05 00:57:22 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init_cube(t_cube *cube, t_data *data)
 	cube->keys.right = 0;
 	cube->keys.left = 0;
 	cube->frame = NULL;
+	cube->intro_mode = 0;
 }
 
 void	free_map_textures(t_map *map)

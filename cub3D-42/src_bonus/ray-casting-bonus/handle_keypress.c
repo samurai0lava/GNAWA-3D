@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keypress.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <iouhssei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 18:16:55 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/05/22 15:11:54 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/07/05 00:41:50 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 static void	game_loop_keypress(t_cube *cube)
 {
-	cast_away(cube);
-	draw_weapon(cube);
-	draw_circular_minimap(cube);
-	mlx_put_image_to_window(cube->mlx, cube->mlx_window, cube->data->img, 0, 0);
+    if (cube->intro_mode)
+        show_intro(cube, NULL);
+    else
+    {
+        // Once intro_mode=0, run your game logic
+        cast_away(cube);
+        draw_weapon(cube);
+        draw_circular_minimap(cube);
+        mlx_put_image_to_window(cube->mlx, cube->mlx_window, cube->data->img, 0, 0);
+    }
 }
 
 void	init_colliding(t_cube *cube, double *px, double *py)

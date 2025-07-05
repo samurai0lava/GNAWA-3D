@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_frames.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <iouhssei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 14:39:37 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/05/22 15:17:29 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/07/05 00:30:47 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,3 +73,4 @@ int	load_frames(t_cube *cube)
 	}
 	return (0);
 }
+ 

@@ -6,7 +6,7 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 15:44:52 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/06/27 15:05:18 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/07/05 00:57:41 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,82 @@ void	init_textures(t_cube *cube)
 			return ;
 		i++;
 	}
+}
+
+
+static void	push_intro_frame(t_intro_frame **frames, void *img, int w, int h)
+{
+    t_intro_frame *new_frame = malloc(sizeof(t_intro_frame));
+    t_intro_frame *current;
+
+    new_frame->img = img;
+    new_frame->width = w;
+    new_frame->height = h;
+    new_frame->next = NULL;
+    if (!*frames)
+    {
+        *frames = new_frame;
+        return;
+    }
+    current = *frames;
+    while (current->next)
+        current = current->next;
+    current->next = new_frame;
+}
+
+/**
+ * Loads XPM frames from “1.xpm” to “17.xpm” and stores them in a linked list.
+ */
+void	load_intro_frames(t_cube *cube, t_intro_frame **frames)
+{
+    char	path[128];
+    int		i;
+    void	*img;
+    int		w, h;
+
+    i = 1;
+    while (i <= 17)
+    {
+        snprintf(path, sizeof(path), "./textures/intro/%d.xpm", i);
+        img = mlx_xpm_file_to_image(cube->mlx, path, &w, &h);
+        if (img)
+            push_intro_frame(frames, img, w, h);
+        i++;
+    }
+}
+
+void	show_intro_animation(t_cube *cube, t_intro_frame *frames)
+{
+    static int	frame_idx;
+    t_intro_frame *current = frames;
+    int	i = 0;
+
+    while (current && i < frame_idx)
+    {
+        current = current->next;
+        i++;
+    }
+    if (!current) 
+    {
+        current = frames;
+        while (current->next)
+            current = current->next;
+    }
+    else
+    {
+        frame_idx++;
+    }
+    clean_display(cube);
+    mlx_put_image_to_window(cube->mlx, cube->mlx_window, current->img, 0, 0);
+}
+
+void show_intro(t_cube *cube, t_intro_frame *frames)
+{
+    // If not loaded yet, load all frames into the global or cube->intro_frames
+    if (!frames)
+        load_intro_frames(cube, &frames);
+    show_intro_animation(cube, frames);
+    cube->intro_mode = 1;
 }
 
 void	mlx_hook_cube(t_cube *cube)
@@ -95,5 +171,6 @@ void	init_mlx(t_cube *cube, t_data *data)
 	data->img = mlx_new_image(cube->mlx, WIDTH, HEIGHT);
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
 			&data->line_length, &data->endian);
+	show_intro(cube, NULL);	 // Show intro frames if available
 	game_engine(cube);
 }
