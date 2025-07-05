@@ -198,6 +198,10 @@ fclean : clean
 
 re : fclean all
 
+run : all
+	@echo "$(GREEN)Running $(NAME)...$(NC)"
+	@./$(NAME) maps/map_bonus.cub
+
 .PHONY: all clean fclean re
 
 .SECONDARY: $(OBJ)

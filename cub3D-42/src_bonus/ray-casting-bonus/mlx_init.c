@@ -6,7 +6,7 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 15:44:52 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/07/05 00:57:41 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/07/05 13:26:48 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,7 @@ void	init_mlx(t_cube *cube, t_data *data)
 	data->img = mlx_new_image(cube->mlx, WIDTH, HEIGHT);
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
 			&data->line_length, &data->endian);
+	
 	show_intro(cube, NULL);	 // Show intro frames if available
 	game_engine(cube);
 }
