@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_weapon2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iouhssei <iouhssei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 13:58:55 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/05/22 15:09:51 by iouhssei         ###   ########.fr       */
+/*   Updated: 2025/07/06 23:17:14 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ int	close_win(t_cube *cube)
 {
 	if (!cube)
 		exit(1);
+	Mix_FreeMusic(cube->bgm);
+	Mix_CloseAudio();
+	SDL_Quit();
 	destroy_mlx(cube);
 	free_map_struct(&cube->map);
 	free_all(cube->gc);

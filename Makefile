@@ -129,7 +129,11 @@ $(LIB):
 	@echo "$(GREEN)✅ Libft compiled successfully.$(NC)"
 
 $(NAME): $(OBJ) $(LIB)
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) $(LIB)
+	    $(CC) $(OBJ) \
+        -Lmlx_linux -lmlx_Linux \
+        -L/usr/lib -Imlx_linux \
+        -lXext -lX11 -lm -lz -lSDL2 -lSDL2_mixer \
+        -o $(NAME) $(LIB)
 	@echo "$(GREEN)✅ $(NAME) built successfully! You can now run ./$(NAME) <map_file>.cub$(NC)"
 	@echo "$(GREEN)   .--,-\`\`-.                                                                 $(NC)"
 	@echo "$(GREEN)  /   /     '.    ,----..                                                    $(NC)"

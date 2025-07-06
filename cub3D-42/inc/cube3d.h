@@ -6,7 +6,7 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 15:44:41 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/07/05 00:40:18 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/07/06 23:15:28 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <unistd.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 
 //----------------------------------------//
 //-----------MACROS-----------------------//
@@ -344,6 +346,7 @@ typedef struct s_cube
 	t_sky					sky;
 	t_ground				ground;
 	int						intro_mode;
+	Mix_Music				*bgm;
 }							t_cube;
 
 typedef struct s_intro_frame

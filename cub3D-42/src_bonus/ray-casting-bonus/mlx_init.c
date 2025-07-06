@@ -6,11 +6,13 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 15:44:52 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/07/05 13:26:48 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/07/06 23:28:22 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube3d.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 
 int	get_texture_pixel(t_data *texture, int x, int y)
 {
@@ -134,6 +136,15 @@ void	mlx_hook_cube(t_cube *cube)
 	mlx_hook(cube->mlx_window, 3, 1L << 1, on_key_release, cube);
 }
 
+static int init_audio(void)
+{
+    if (SDL_Init(SDL_INIT_AUDIO) < 0)
+        return (fprintf(stderr,"SDL_Init error\n"), 0);
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+        return (fprintf(stderr,"Mix_OpenAudio error\n"), 0);
+    return 1;
+}
+
 void	game_engine(t_cube *cube)
 {
 	init_textures(cube);
@@ -146,6 +157,9 @@ void	game_engine(t_cube *cube)
 	mlx_hook_cube(cube);
 	init_minimap_params(cube);
 	cast_away(cube);
+	cube->bgm = Mix_LoadMUS("./textures/hamid-el-kasri-allal.mp3");
+	if (cube->bgm)
+    	Mix_PlayMusic(cube->bgm, -1);
 	draw_weapon(cube);
 	draw_circular_minimap(cube);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_window, cube->data->img, 0, 0);
@@ -170,8 +184,9 @@ void	init_mlx(t_cube *cube, t_data *data)
 	}
 	data->img = mlx_new_image(cube->mlx, WIDTH, HEIGHT);
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
-			&data->line_length, &data->endian);
-	
+		&data->line_length, &data->endian);
+		
+	init_audio(); // Initialize SDL audio
 	show_intro(cube, NULL);	 // Show intro frames if available
 	game_engine(cube);
 }

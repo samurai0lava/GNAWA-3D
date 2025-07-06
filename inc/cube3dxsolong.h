@@ -3,7 +3,8 @@
 
 # include "../cub3D-42/inc/cube3d.h"
 # include "../So_long_42/inc/so_long.h"
-
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 
 typedef enum { GAME_SOLONG, GAME_CUB3D } t_game_state;
 
