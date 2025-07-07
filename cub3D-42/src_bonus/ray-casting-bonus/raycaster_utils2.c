@@ -6,7 +6,7 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 14:41:29 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/07/04 22:52:18 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/07/07 13:51:36 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,11 @@ int	on_key_press(int keycode, t_cube *cube)
 		cube->keys.left = 1;
 	if (keycode == RIGHT_KEY)
 		cube->keys.right = 1;
-	if (cube->intro_mode && keycode == 32)
+	if (cube->intro_mode == 1 && keycode == 32)  // Space pressed during first intro
     {
-        cube->intro_mode = 0; // Exit intro mode
+        cube->intro_mode = 2; // Move to second intro
+        cube->intro_frame_counter = 0; // Reset frame counter for second intro
+        cube->intro_timer = 0; // Reset timer
     }
 	return (0);
 }

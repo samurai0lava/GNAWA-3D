@@ -6,7 +6,7 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 18:16:55 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/07/05 00:41:50 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/07/07 13:51:36 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 static void	game_loop_keypress(t_cube *cube)
 {
-    if (cube->intro_mode)
+    if (cube->intro_mode == 1)
         show_intro(cube, NULL);
+    else if (cube->intro_mode == 2)
+        show_second_intro(cube, NULL);
     else
     {
         // Once intro_mode=0, run your game logic

@@ -6,7 +6,7 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 15:44:41 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/07/06 23:15:28 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/07/07 13:57:48 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -310,6 +310,14 @@ typedef struct s_ground
 	int    endian;
 }				t_ground;
 
+typedef struct s_intro_frame
+{
+    void					*img;
+    int						width;
+    int						height;
+    struct s_intro_frame	*next;
+}	t_intro_frame;
+
 typedef struct s_cube
 {
 	void					*mlx;
@@ -345,17 +353,13 @@ typedef struct s_cube
 	t_map					map;
 	t_sky					sky;
 	t_ground				ground;
-	int						intro_mode;
+	int						intro_mode; // 0: game, 1: first intro, 2: second intro
+	t_intro_frame			*first_intro_frames;
+	t_intro_frame			*second_intro_frames;
+	int						intro_frame_counter;
+	int						intro_timer;
 	Mix_Music				*bgm;
 }							t_cube;
-
-typedef struct s_intro_frame
-{
-    void					*img;
-    int						width;
-    int						height;
-    struct s_intro_frame	*next;
-}	t_intro_frame;
 
 
 
@@ -534,5 +538,8 @@ int							is_pixel_visible(t_cube *cube);
 void						draw_weapon_pixel(t_cube *cube, int x, int y);
 // void						show_intro(t_cube *cube);
 void show_intro(t_cube *cube, t_intro_frame *frames);
+void load_second_intro_frames(t_cube *cube, t_intro_frame **frames);
+void show_second_intro_animation(t_cube *cube, t_intro_frame *frames);
+void show_second_intro(t_cube *cube, t_intro_frame *frames);
 
 #endif

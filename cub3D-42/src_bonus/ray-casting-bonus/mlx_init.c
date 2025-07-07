@@ -6,7 +6,7 @@
 /*   By: samurai0lava <samurai0lava@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 15:44:52 by iouhssei          #+#    #+#             */
-/*   Updated: 2025/07/06 23:28:22 by samurai0lav      ###   ########.fr       */
+/*   Updated: 2025/07/07 13:59:28 by samurai0lav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,39 @@ void	load_intro_frames(t_cube *cube, t_intro_frame **frames)
     }
 }
 
+/**
+ * Loads XPM frames from "5.xpm" to "27.xpm" and stores them in a linked list.
+ */
+void	load_second_intro_frames(t_cube *cube, t_intro_frame **frames)
+{
+    char	path[128];
+    int		i;
+    void	*img;
+    int		w, h;
+
+    i = 5;
+    while (i <= 27)
+    {
+        snprintf(path, sizeof(path), "./textures/intro2/%d.xpm", i);
+        img = mlx_xpm_file_to_image(cube->mlx, path, &w, &h);
+        if (img)
+            push_intro_frame(frames, img, w, h);
+        i++;
+    }
+}
+
 void	show_intro_animation(t_cube *cube, t_intro_frame *frames)
 {
-    static int	frame_idx;
     t_intro_frame *current = frames;
     int	i = 0;
 
-    while (current && i < frame_idx)
+    cube->intro_timer++;
+    if (cube->intro_timer < 10000)  // Wait for frame delay
+        return;
+    
+    cube->intro_timer = 0;  // Reset timer
+    
+    while (current && i < cube->intro_frame_counter)
     {
         current = current->next;
         i++;
@@ -114,7 +140,38 @@ void	show_intro_animation(t_cube *cube, t_intro_frame *frames)
     }
     else
     {
-        frame_idx++;
+        cube->intro_frame_counter++;
+    }
+    clean_display(cube);
+    mlx_put_image_to_window(cube->mlx, cube->mlx_window, current->img, 0, 0);
+}
+
+void	show_second_intro_animation(t_cube *cube, t_intro_frame *frames)
+{
+    t_intro_frame *current = frames;
+    int	i = 0;
+
+    cube->intro_timer++;
+    if (cube->intro_timer < 10000)  // Wait for frame delay
+        return;
+    
+    cube->intro_timer = 0;  // Reset timer
+    
+    while (current && i < cube->intro_frame_counter)
+    {
+        current = current->next;
+        i++;
+    }
+    if (!current) 
+    {
+        // Second intro finished, enter game
+        cube->intro_mode = 0;
+        cube->intro_frame_counter = 0; // Reset for next time
+        return;
+    }
+    else
+    {
+        cube->intro_frame_counter++;
     }
     clean_display(cube);
     mlx_put_image_to_window(cube->mlx, cube->mlx_window, current->img, 0, 0);
@@ -122,11 +179,21 @@ void	show_intro_animation(t_cube *cube, t_intro_frame *frames)
 
 void show_intro(t_cube *cube, t_intro_frame *frames)
 {
-    // If not loaded yet, load all frames into the global or cube->intro_frames
-    if (!frames)
-        load_intro_frames(cube, &frames);
-    show_intro_animation(cube, frames);
+    // If not loaded yet, load all frames into cube->first_intro_frames
+	(void)frames;
+    if (!cube->first_intro_frames)
+        load_intro_frames(cube, &cube->first_intro_frames);
+    show_intro_animation(cube, cube->first_intro_frames);
     cube->intro_mode = 1;
+}
+
+void show_second_intro(t_cube *cube, t_intro_frame *frames)
+{
+    // If not loaded yet, load all frames
+	(void)frames;
+    if (!cube->second_intro_frames)
+        load_second_intro_frames(cube, &cube->second_intro_frames);
+    show_second_intro_animation(cube, cube->second_intro_frames);
 }
 
 void	mlx_hook_cube(t_cube *cube)
@@ -186,6 +253,11 @@ void	init_mlx(t_cube *cube, t_data *data)
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
 		&data->line_length, &data->endian);
 		
+	cube->intro_mode = 1; // Start with first intro
+	cube->first_intro_frames = NULL;
+	cube->second_intro_frames = NULL;
+	cube->intro_frame_counter = 0;
+	cube->intro_timer = 0;
 	init_audio(); // Initialize SDL audio
 	show_intro(cube, NULL);	 // Show intro frames if available
 	game_engine(cube);
