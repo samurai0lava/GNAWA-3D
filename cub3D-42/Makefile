@@ -122,7 +122,7 @@ bonus: $(OBJ_BONUS) $(LIB)
 	@echo "$(GREEN)✅ $(NAME_BONUS) built successfully! You can now run ./$(NAME_BONUS) <map_file>.cub$(NC)"
 
 %.o: %.c
-	@$(CC) -Wall -Wextra -Werror -g -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	@$(CC) -Wall -Wextra -Werror -g -I/usr/include -Imlx_linux -O5 -c $< -o $@
 	@echo "$(YELLOW)Compiling: $< $(NC)" # Added echo for compilation step
 
 clean :
