@@ -1,4 +1,8 @@
-# GNAWA-CUB3DXSO_LONG
+# GNAWA-3D
+
+## License
+
+This project is licensed under the **MIT License**. See the `LICENSE` file for details.
 
 ## Overview
 This project is a Cub3D-style 3D raycasting engine (with bonus features like textures/sky, a minimap, and an animated weapon). It renders a pseudo-3D scene from a grid-based `.cub` map using a DDA (Digital Differential Analyzer) raycasting loop.
@@ -130,6 +134,3 @@ For each frame, the engine casts one ray per screen column and draws vertical sl
 6. **Minimap**
    - A circular minimap is drawn around the player.
    - It maps nearby world cells onto minimap pixels and also draws the player direction line.
-
-## Notes about the so_long part
-This repository also contains a `so_long` implementation (`main_solong`), but the default `src/main.c` currently launches only the Cub3D version (`main_cube3d`).
