@@ -198,9 +198,11 @@ void show_second_intro(t_cube *cube, t_intro_frame *frames)
 
 void	mlx_hook_cube(t_cube *cube)
 {
-	mlx_hook(cube->mlx_window, 17, 1L << 17, close_win, cube);
-	mlx_hook(cube->mlx_window, 2, 1L << 0, on_key_press, cube);
-	mlx_hook(cube->mlx_window, 3, 1L << 1, on_key_release, cube);
+	// MiniLibX hook callbacks use an untyped function-pointer signature.
+	// Cast to silence incompatible pointer type warnings.
+	mlx_hook(cube->mlx_window, 17, 1L << 17, (int (*)())close_win, cube);
+	mlx_hook(cube->mlx_window, 2, 1L << 0, (int (*)())on_key_press, cube);
+	mlx_hook(cube->mlx_window, 3, 1L << 1, (int (*)())on_key_release, cube);
 }
 
 static int init_audio(void)
@@ -230,7 +232,7 @@ void	game_engine(t_cube *cube)
 	draw_weapon(cube);
 	draw_circular_minimap(cube);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_window, cube->data->img, 0, 0);
-	mlx_loop_hook(cube->mlx, key_loop, cube);
+	mlx_loop_hook(cube->mlx, (int (*)())key_loop, cube);
 	mlx_loop(cube->mlx);
 }
 

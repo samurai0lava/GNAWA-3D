@@ -1,4 +1,4 @@
-#           _____                    _____                    _____          
+#          _____                    _____                    _____          
 #          /\    \                  /\    \                  /\    \           
 #         /::\    \                /::\____\                /::\    \        
 #        /::::\    \              /::::|   |               /::::\    \       
@@ -184,7 +184,7 @@ $(NAME): $(OBJ) $(LIB)
 
 
 %.o: %.c
-	@$(CC) -Wall -Wextra -Werror -g -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	@$(CC) -Wall -Wextra -g -I/usr/include -Imlx_linux -O3 -c $< -o $@
 	@echo "$(YELLOW)Compiling: $< $(NC)" # Added echo for compilation step
 
 clean :

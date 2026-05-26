@@ -62,8 +62,10 @@ int	main_solong(int argc, char **argv)
 			return (1);
 		if (setup_game(&data) == 1)
 			return (1);
-		mlx_hook(data.win, 17, 0, close_window, &data);
-		mlx_key_hook(data.win, handle_moves, &data);
+		// MiniLibX hook callbacks use an untyped function-pointer signature.
+		mlx_hook(data.win, 17, 0, (int (*)())close_window, &data);
+		mlx_key_hook(data.win,
+			(int (*)(int, void *))handle_moves, &data);
 		mlx_loop(data.mlx);
 	}
 	else
