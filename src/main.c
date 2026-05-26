@@ -1,4 +1,4 @@
-#include "inc/cube3dxsolong.h"
+#include "../inc/cube3dxsolong.h"
 
 
 int main(int ac, char **av)

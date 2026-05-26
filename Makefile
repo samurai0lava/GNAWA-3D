@@ -102,9 +102,9 @@ SRCS =  cub3D-42/src/parse/parse_helpers.c \
 		cub3D-42/src_bonus/ray-casting-bonus/utils2.c\
 		cub3D-42/src_bonus/ray-casting-bonus/raycaster_utils2.c\
 		cub3D-42/src_bonus/ray-casting-bonus/mini_map_helper.c\
-		main.c\
-		main_cube.c\
-		main_solong.c\
+		src/main.c\
+		src/main_cube.c\
+		src/main_solong.c\
 		So_long_42/src/moves.c So_long_42/parsing/parsing_input.c So_long_42/parsing/parsing_map.c So_long_42/src/init_data.c So_long_42/src/utils.c So_long_42/src/utils_2.c So_long_42/src/load_map.c So_long_42/src/draw_map.c\
 
 LIB = libft/libft.a

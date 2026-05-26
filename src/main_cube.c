@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/cube3dxsolong.h"
+#include "../inc/cube3dxsolong.h"
 
 void	init_cube(t_cube *cube, t_data *data)
 {
